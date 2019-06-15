@@ -116,7 +116,7 @@ interval=10
 
 [wttr]
 command=curl 'wttr.in/buenos?format=%c%m+%t+%h+%P+%w'
-interval=1800
+interval=900
 
 # Date Time
 [time]
