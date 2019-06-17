@@ -97,7 +97,7 @@ bindsym XF86AudioRaiseVolume exec amixer sset Master $(($RANDOM % 5 + 1))%+ && p
 bindsym $mod+m bar mode toggle
 
 bar {
-        mode hide
+        mode dock
         colors {
           background #000025
           statusline #FFFFFF
