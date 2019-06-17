@@ -2,16 +2,14 @@ command=/usr/lib/i3blocks/$BLOCK_NAME
 separator_block_width=15
 markup=pango
 
-[volume]
-label=♪
-instance=Master
-interval=once
-signal=10
-
 [keyindicator]
 instance=CAPS
 interval=once
 signal=11
+
+[bcra]
+command=$SCRIPT_DIR/bcra/bcra
+interval=once
 
 [memory]
 label=📟
@@ -37,6 +35,12 @@ interval=10
 [battery]
 command=$SCRIPT_DIR/battery/battery
 interval=30
+
+[volume]
+label=♪
+instance=Master
+interval=once
+signal=10
 
 [wttr]
 command=curl 'wttr.in/buenos?format=%c%m+%t+%h+%P+%w'

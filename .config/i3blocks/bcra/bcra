@@ -1,0 +1,5 @@
+#!/bin/bash
+
+apikey="[insert your bcra apikey here]"
+price=$(curl -s https://api.estadisticasbcra.com/usd_of_minorista -H "Authorization: Bearer $apikey" | jq '.[-1].v')
+echo \$$price
