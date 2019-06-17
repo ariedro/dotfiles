@@ -1,6 +1,6 @@
 command=/usr/lib/i3blocks/$BLOCK_NAME
 separator_block_width=15
-markup=none
+markup=pango
 
 [volume]
 label=♪
@@ -34,10 +34,14 @@ interval=10
 [temperature]
 interval=10
 
+[battery]
+command=$SCRIPT_DIR/battery/battery
+interval=30
+
 [wttr]
 command=curl 'wttr.in/buenos?format=%c%m+%t+%h+%P+%w'
 interval=900
 
 [time]
-command=date '+%s %Y-%m-%d %H:%M:%S'
+command=date '+%s %Y-%m-%d %H:%M'
 interval=5
