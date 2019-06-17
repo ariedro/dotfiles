@@ -11,17 +11,17 @@ signal=11
 command=$SCRIPT_DIR/bcra/bcra
 interval=once
 
-[money]
-command=$SCRIPT_DIR/money/money
-interval=5
+#[money]
+#command=$SCRIPT_DIR/money/money
+#interval=5
 
 [memory]
-label=📟
+label=M
 separator=false
 interval=30
 
 [disk]
-label=💽
+label=D
 interval=30
 
 [iface]
@@ -41,13 +41,13 @@ command=$SCRIPT_DIR/battery/battery
 interval=30
 
 [volume]
-label=♪
+label=Vo
 instance=Master
 interval=once
 signal=10
 
 [wttr]
-command=curl 'wttr.in/buenos?format=%c%m+%t+%h+%P+%w'
+command=curl 'wttr.in/buenos?format=%C+%t+%p+%h+%P'
 interval=900
 
 [time]

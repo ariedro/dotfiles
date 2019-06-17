@@ -2,7 +2,7 @@ set $mod Mod4
 exec --no-startup-id /usr/bin/feh --bg-fill ~/wall.jpg
 exec --no-startup-id dunst
 
-font pango:Fixedsys Excelsior 3.01 12
+font pango:ProggySquareTT 12
 
 floating_modifier $mod
 
