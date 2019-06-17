@@ -1,4 +1,5 @@
 export ZSH=$HOME/.oh-my-zsh
+export PATH=$PATH:~/.local/bin
 
 ZSH_THEME="dst"
 ENABLE_CORRECTION="true"
