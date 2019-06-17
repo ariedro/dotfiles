@@ -94,6 +94,19 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 10 && notify-send --urgency=low
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10 && notify-send --urgency=low $(xbacklight -get)
 
 bar {
+        mode hide
+        colors {
+          background #000025
+          statusline #FFFFFF
+          separator  #666666
+
+          focused_workspace  #000549 #293DC6 #FFFFFF
+          active_workspace   #000000 #111132 #FFFFFF
+          inactive_workspace #000000 #111132 #888888
+          urgent_workspace   #500000 #900000 #FFFFFF
+          binding_mode       #500000 #900000 #FFFFFF
+        }
+        
         status_command SCRIPT_DIR=~/.config/i3blocks i3blocks
 }
 
