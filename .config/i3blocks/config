@@ -11,6 +11,10 @@ signal=11
 command=$SCRIPT_DIR/bcra/bcra
 interval=once
 
+[money]
+command=$SCRIPT_DIR/money/money
+interval=5
+
 [memory]
 label=📟
 separator=false
