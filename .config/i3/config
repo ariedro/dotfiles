@@ -110,7 +110,7 @@ bar {
           binding_mode       #500000 #900000 #FFFFFF
         }
         
-        status_command SCRIPT_DIR=~/.config/i3blocks i3blocks
+        status_command SCRIPT_DIR=~/.config/i3blocks PATH=$PATH:~/.local/bin i3blocks
 }
 
 hide_edge_borders smart

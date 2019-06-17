@@ -1,0 +1,7 @@
+#!/bin/bash
+
+notasks="? [0/0] -"
+pomostatus=$(pomo status)
+if [[ "$pomostatus" != "$notasks" ]]
+  then echo $pomostatus
+fi
