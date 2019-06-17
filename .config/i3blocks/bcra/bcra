@@ -1,5 +1,7 @@
 #!/bin/bash
 
 apikey="[insert your bcra apikey here]"
-price=$(curl -s https://api.estadisticasbcra.com/usd_of_minorista -H "Authorization: Bearer $apikey" | jq '.[-1].v')
-echo \$$price
+color=#00AA00
+price=\$$(curl -s https://api.estadisticasbcra.com/usd_of_minorista -H "Authorization: Bearer $apikey" | jq '.[-1].v')
+message="<span foreground=\"$color\">$price</span>" 
+echo $message

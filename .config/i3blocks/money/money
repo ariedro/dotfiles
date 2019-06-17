@@ -1,4 +1,7 @@
 #!/bin/bash
 
 salary_per_second="[insert your salary per second here]"
-echo "scale=2; $(awk '{print int($1)}' /proc/uptime) * $salary_per_second" | bc
+color=#AAAA00
+money=\$$(echo "scale=2; $(awk '{print int($1)}' /proc/uptime) * $salary_per_second" | bc)
+message="<span foreground=\"$color\">$money</span>" 
+echo $message
