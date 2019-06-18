@@ -94,6 +94,7 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 10 && notify-send --urgency=low
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10 && notify-send --urgency=low $(xbacklight -get)
 bindsym XF86AudioLowerVolume exec amixer sset Master $(($RANDOM % 5 + 1))%- && pkill -SIGRTMIN+10 i3blocks
 bindsym XF86AudioRaiseVolume exec amixer sset Master $(($RANDOM % 5 + 1))%+ && pkill -SIGRTMIN+10 i3blocks
+bindsym Shift+Print --release exec scrot -s /tmp/screenshot-$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'
 bindsym $mod+m bar mode toggle
 
 bar {
