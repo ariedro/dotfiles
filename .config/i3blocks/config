@@ -2,10 +2,6 @@ command=/usr/lib/i3blocks/$BLOCK_NAME
 separator_block_width=15
 markup=pango
 
-[pomodoro]
-command=$SCRIPT_DIR/pomo/pomo
-interval=5
-
 [keyindicator]
 instance=CAPS
 interval=once
