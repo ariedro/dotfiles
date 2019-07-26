@@ -28,7 +28,7 @@ bindsym $mod+Shift+Right move right
 bindsym $mod+h split h
 bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
-bindsym $mod+s layout stacking
+#bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
@@ -71,15 +71,15 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 mode "resize" {
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+        bindsym j resize shrink width 5 px or 5 ppt
+        bindsym k resize grow height 5 px or 5 ppt
+        bindsym l resize shrink height 5 px or 5 ppt
+        bindsym semicolon resize grow width 5 px or 5 ppt
 
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym Left resize shrink width 5 px or 5 ppt
+        bindsym Down resize grow height 5 px or 5 ppt
+        bindsym Up resize shrink height 5 px or 5 ppt
+        bindsym Right resize grow width 5 px or 5 ppt
 
         bindsym Return mode "default"
         bindsym Escape mode "default"
@@ -94,7 +94,7 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 10 && notify-send --urgency=low
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10 && notify-send --urgency=low $(xbacklight -get)
 bindsym XF86AudioLowerVolume exec amixer sset Master $(($RANDOM % 5 + 1))%- && pkill -SIGRTMIN+10 i3blocks
 bindsym XF86AudioRaiseVolume exec amixer sset Master $(($RANDOM % 5 + 1))%+ && pkill -SIGRTMIN+10 i3blocks
-bindsym Shift+Print --release exec scrot -s /tmp/screenshot-$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'
+bindsym $mod+s --release exec scrot -s /tmp/screenshot-$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'
 bindsym $mod+m bar mode toggle
 
 bar {
