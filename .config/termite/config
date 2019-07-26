@@ -1,36 +1,42 @@
 [options]
 font = Fixedsys Excelsior 3.01 12
 scrollback_lines = 10000
-
 [colors]
-# Base16 Gruvbox dark, pale
-# Author: Dawid Kurek (dawikur@gmail.com), morhetz (https://github.com/morhetz/gruvbox)
 
-foreground          = #dab997
-foreground_bold     = #d5c4a1
-cursor              = #d5c4a1
-cursor_foreground   = #262626
-background          = rgba(38, 38, 38)
+# special
+foreground      = #aaaaaa
+foreground_bold = #aaaaaa
+cursor          = #aaaaaa
+background      = #000000
 
-color0  = #262626
-color1  = #d75f5f
-color2  = #afaf00
-color3  = #ffaf00
-color4  = #83adad
-color5  = #d485ad
-color6  = #85ad85
-color7  = #dab997
-color8  = #8a8a8a
-color9  = #d75f5f
-color10 = #afaf00
-color11 = #ffaf00
-color12 = #83adad
-color13 = #d485ad
-color14 = #85ad85
-color15 = #ebdbb2
-color16 = #ff8700
-color17 = #d65d0e
-color18 = #3a3a3a
-color19 = #4e4e4e
-color20 = #949494
-color21 = #d5c4a1
+# black
+color0  = #202020
+color8  = #606060
+
+# red
+color1  = #ff6565
+color9  = #ff8d8d
+
+# green
+color2  = #93d44f
+color10 = #c8e7a8
+
+# yellow
+color3  = #eab93d
+color11 = #ffc123
+
+# blue
+color4  = #204a87
+color12 = #3465a4
+
+# magenta
+color5  = #ce5c00
+color13 = #f57900
+
+# cyan
+color6  = #89b6e2
+color14 = #46a4ff
+
+# white
+color7  = #cccccc
+color15 = #ffffff
