@@ -2,6 +2,12 @@ command=/usr/lib/i3blocks/$BLOCK_NAME
 separator_block_width=15
 markup=pango
 
+[volume]
+label=Vo
+instance=Master
+interval=once
+signal=10
+
 [keyindicator]
 instance=CAPS
 interval=once
@@ -40,15 +46,13 @@ interval=10
 command=$SCRIPT_DIR/battery/battery
 interval=30
 
-[volume]
-label=Vo
-instance=Master
-interval=once
-signal=10
-
 [wttr]
 command=curl 'wttr.in/buenos?format=%C+%t+%p+%h+%P'
 interval=900
+
+[uptime]
+command=date -ud @$(($(date +%s) - $(date -d "$(uptime -s)" +%s))) +%H:%M
+interval=60
 
 [time]
 command=date '+%s %Y-%m-%d %H:%M'
