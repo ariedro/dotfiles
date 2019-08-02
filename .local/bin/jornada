@@ -1,8 +1,9 @@
 #!/bin/bash
 
-HORAS="/home/tito/notes/$(date -I).txt"
-if [ ! -f "$HORAS" ]; then touch $HORAS; fi
+HOURS="$HOME/notes/$(date -I).txt"
+if [ ! -d "$HOME/notes" ]; then mkdir "$HOME/notes"; fi
+if [ ! -f "$HOURS" ]; then touch $HOURS; fi
 
 hour=$(date -ud @$(($(date +%s) - $(date -d "$(uptime -s)" +%s))) +%H:%M)
-echo -n "$hour: " >> $HORAS
-nano $HORAS
+echo -n "$hour: " >> $HOURS
+nano $HOURS
