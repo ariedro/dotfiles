@@ -1,0 +1,8 @@
+#!/bin/bash
+
+HORAS="/home/tito/notes/$(date -I).txt"
+if [ ! -f "$HORAS" ]; then touch $HORAS; fi
+
+hour=$(date -ud @$(($(date +%s) - $(date -d "$(uptime -s)" +%s))) +%H:%M)
+echo -n "$hour: " >> $HORAS
+nano $HORAS
