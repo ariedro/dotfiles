@@ -1,4 +1,4 @@
 #!/bin/bash
 
 if [ ! -f "$SCRIPT_DIR/countdown/date" ]; then exit; fi
-eval "echo $(date -ud "@$(($(date -d "$(cat $SCRIPT_DIR/countdown/date)" +%s) - $(date +%s))) " +'$((%s/3600/24)) %H:%M:%S')"
+eval "echo $(date -ud "@$(($(date -d "$(cat $SCRIPT_DIR/countdown/date)" +%s) - $(date +%s))) " +'$((%s/3600/24))d %H:%M:%S')"
