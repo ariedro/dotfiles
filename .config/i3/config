@@ -96,6 +96,16 @@ bindsym XF86AudioLowerVolume exec amixer sset Master $(($RANDOM % 5 + 1))%- && p
 bindsym XF86AudioRaiseVolume exec amixer sset Master $(($RANDOM % 5 + 1))%+ && pkill -SIGRTMIN+10 i3blocks
 bindsym $mod+s --release exec scrot -s /tmp/screenshot-$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'
 bindsym $mod+m bar mode toggle
+bindsym $mod+p exec xlock -mode coral -timeelapsed -count 1
+
+# class                 border  bground text    indicator child_border
+client.focused          #4C7899 #285577 #FFFFFF #2E9EF4   #00CC00
+client.focused_inactive #333333 #5F676A #FFFFFF #484E50   #5F676A
+client.unfocused        #333333 #222222 #888888 #292D2E   #222222
+client.urgent           #2F343A #900000 #FFFFFF #900000   #900000
+client.placeholder      #000000 #0C0C0C #FFFFFF #000000   #0C0C0C
+
+client.background       #FFFFFF
 
 bar {
         mode dock
