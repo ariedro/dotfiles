@@ -46,14 +46,22 @@ interval=10
 command=$SCRIPT_DIR/battery/battery
 interval=30
 
-[wttr]
-command=curl 'wttr.in/buenos?format=%C+%t+%p+%h+%P'
-interval=900
-
 [uptime]
 command=date -ud @$(($(date +%s) - $(date -d "$(uptime -s)" +%s))) +%H:%M
 interval=60
 
+[wttr]
+command=curl 'wttr.in/buenos?format=%t+%h+%P'
+interval=900
+
+[timeleft]
+command=$SCRIPT_DIR/countdown/countdown
+interval=5
+
+[agedays]
+command=echo -n $((($(date +%s) - $(date -d 1993-12-22\ 05:35 +%s)) / 86400))d
+interval=once
+
 [time]
-command=date '+%s %Y-%m-%d %H:%M'
+command=date '+%s %U.%w %Y-%m-%d %H:%M'
 interval=5
