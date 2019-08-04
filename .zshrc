@@ -16,5 +16,5 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 alias config='/usr/bin/git --git-dir=/home/tito/.cfg/ --work-tree=/home/tito'
-alias ssh_vps='ssh root@148.251.3.246 -p 3850 -v'
+alias ssh_vps='ssh root@148.251.3.246 -p 3850 -v -t "export TERM=xterm-color; bash -l"'
 alias ssh_zarzamora='ssh pi@192.168.0.15 -v'
