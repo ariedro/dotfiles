@@ -2,8 +2,14 @@
 
 HOURS="$HOME/notes/$(date -I).txt"
 if [ ! -d "$HOME/notes" ]; then mkdir "$HOME/notes"; fi
-if [ ! -f "$HOURS" ]; then touch $HOURS; fi
+if [ ! -f "$HOURS" ]; then
+  touch $HOURS
+  last_hour=$(date -d "$(uptime -s)" +%s)
+else 
+  last_hour=$(cat $HOURS | tail -1 | grep -oP "(?<=\[)[0-9]*(?=\])")
+fi
 
-hour=$(date -ud @$(($(date +%s) - $(date -d "$(uptime -s)" +%s))) +%H:%M)
-echo -n "$hour: " >> $HOURS
-nano $HOURS
+hour=$(($(date -ud @$(($(date +%s) - $last_hour)) +%s) / 60))m
+
+echo -n "[$(date +%s)] $hour: " >> $HOURS
+vim $HOURS
