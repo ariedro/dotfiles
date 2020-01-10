@@ -1,0 +1,6 @@
+#!/bin/bash
+
+color=#4040AA
+price=\$$(curl 'https://api-contenidos.lanacion.com.ar/json/V3/economia/cotizacionblue/DBLUE' | jq -r '.venta' | sed 's/,/./')
+message="<span foreground=\"$color\">$price</span>" 
+echo $message
