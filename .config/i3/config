@@ -104,6 +104,7 @@ bindsym $mod+m bar mode toggle
 bindsym $mod+BackSpace exec cool-retro-term
 bindsym $mod+b exec /tmp/session-script.sh
 bindsym $mod+Shift+n exec cmus-remote -n
+bindsym $mod+p exec pomo 25
 
 # class                 border  bground text    indicator child_border
 client.focused          #4C7899 #285577 #FFFFFF #2E9EF4   #d79921

@@ -1,0 +1,20 @@
+#!/bin/bash
+
+PROCESS_ID="/tmp/current-pomo"
+
+if [ -f $PROCESS_ID ]; then
+  notify-send "Stopped"
+  kill -9 $(cat $PROCESS_ID)
+  rm $PROCESS_ID
+  i3-msg "bar mode dock"
+  exit 0
+fi
+
+notify-send "Will focus for $1 mins"
+i3-msg "bar mode hide"
+(
+  sleep $1m
+  notify-send "Congrats!"
+  i3-msg "bar mode dock"
+) &
+echo $! > $PROCESS_ID
