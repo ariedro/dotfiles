@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [[ $(amixer get Capture | grep -o "\[.*\]" | grep -o "on") ]]; then
+  amixer set Capture nocap
+  notify-send "MUTED 😎"
+else
+  amixer set Capture cap
+  notify-send "DESMUTED 😳"
+fi
+
+pkill -SIGRTMIN+11 i3blocks

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+if [[ $(amixer get Capture | grep -o "\[.*\]" | grep -o "on") ]]; then color='#00FF00'; else color='#202020'; fi
+message="<span foreground=\"$color\">MIC</span>" 
+echo $message

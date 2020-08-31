@@ -8,6 +8,11 @@ instance=Master
 interval=once
 signal=10
 
+[micmute]
+command=$SCRIPT_DIR/micmute/micmute
+interval=once
+signal=11
+
 [keyindicator]
 instance=CAPS
 interval=once

@@ -95,6 +95,7 @@ bindsym $mod+r mode "resize"
 bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks
 bindsym XF86MonBrightnessUp exec xbacklight -inc 10 && notify-send --urgency=low $(xbacklight -get)
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10 && notify-send --urgency=low $(xbacklight -get)
+bindsym XF86AudioMicMute exec micmute
 bindsym $mod+z exec amixer sset Master $(($RANDOM % 5 + 1))%- && pkill -SIGRTMIN+10 i3blocks
 bindsym $mod+x exec amixer sset Master $(($RANDOM % 5 + 1))%+ && pkill -SIGRTMIN+10 i3blocks
 bindsym $mod+s --release exec scrot -s /tmp/screenshot-$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'
