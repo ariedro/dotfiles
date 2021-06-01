@@ -2,7 +2,5 @@
 
 if [ ! -f "$SCRIPT_DIR/countdown/date" ]; then exit; fi
 START=$1
-color=$(echo $((255 - ($(date -d "$(cat $SCRIPT_DIR/countdown/date)" +%s) - $(date +%s)) * 255 / $START)) | awk '{printf "#%s%.2x%.2x", "ff", $1, $1}')
-time_left=$(eval "echo $(date -ud "@$(($(date -d "$(cat $SCRIPT_DIR/countdown/date)" +%s) - $(date +%s))) " +'$((%s/3600/24))d %H:%M:%S')")
-message="<span foreground=\"$color\">$time_left</span>"
-echo $message
+time_left=$(eval "echo $(date -ud "@$(($(date -d "$(cat $SCRIPT_DIR/countdown/date)" +%s) - $(date +%s))) " +'$((%s/86400))d')")
+echo $time_left
