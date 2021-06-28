@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+if [ "$1" = "clipboard" ]; then
+    scrot \
+        --select ~/pics/screenshots/$(date +%F_%T).png \
+        --line 'mode=classic,style=dash,width=2,color=#00FFFF' \
+        --freeze \
+        --silent \
+        --exec 'xclip -selection c -t image/png < $f' \
+        2>&1 >> /tmp/scrotlog
+elif [ "$1" = "upload" ]; then
+    scrot \
+        --select /tmp/screenshot.png \
+        --line 'mode=classic,style=dash,width=2,color=#FF00FF' \
+        --freeze \
+        --silent \
+        --exec 'xclip -selection c -t image/png < $f' \
+       2>&1 >> /tmp/scrotlog
+
+    curl \
+        --silent \
+        --form name=$RANDOM.png \
+        --form file=@/tmp/screenshot.png \
+        https://uguu.se/api.php\?d\=upload-tool \
+        | tail -1 \
+        | xclip -selection clipboard \
+        || exit 1
+
+    notify-send "Uploaded"
+    rm /tmp/screenshot.png
+else
+    echo "Usage: takescreen [clipboard | upload]"
+fi
