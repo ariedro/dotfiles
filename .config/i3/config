@@ -102,8 +102,8 @@ bindsym XF86AudioLowerVolume exec amixer sset Master $(($RANDOM % 5 + 1))%- && p
 bindsym XF86AudioRaiseVolume exec amixer sset Master $(($RANDOM % 5 + 1))%+ && pkill -SIGRTMIN+10 i3blocks
 bindsym $mod+z exec amixer sset Master $(($RANDOM % 5 + 1))%- && pkill -SIGRTMIN+10 i3blocks
 bindsym $mod+x exec amixer sset Master $(($RANDOM % 5 + 1))%+ && pkill -SIGRTMIN+10 i3blocks
-bindsym $mod+s --release exec ~/.config/i3/takescreen.sh
-bindsym $mod+Shift+s --release exec scrot -s /tmp/screenshot.png && curl -si -F name=$RANDOM.png -F file=@/tmp/screenshot.png https://uguu.se/api.php\?d\=upload-tool | tail -1 | xclip -selection clipboard && notify-send uploaded && rm /tmp/screenshot.png
+bindsym $mod+s --release exec ~/.local/bin/takescreen clipboard
+bindsym $mod+Shift+s --release exec ~/.local/bin/takescreen upload
 bindsym $mod+m bar mode toggle
 # bindsym $mod+p exec xlock -mode coral -timeelapsed -count 1
 bindsym $mod+BackSpace exec cool-retro-term
