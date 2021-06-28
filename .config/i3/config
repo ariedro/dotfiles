@@ -1,9 +1,13 @@
 set $mod Mod4
-exec --no-startup-id /usr/bin/feh --bg-fill ~/wall.jpg
+exec --no-startup-id /usr/bin/feh --bg-center ~/wall.jpg
 exec --no-startup-id dunst
+exec --no-startup-id unclutter --timeout 1 --ignore-scrolling
 
-font pango:Press Start 2P 8
-#font pango:ProggyTinyTT 12
+# Default programs
+exec --no-startup-id ~/.config/i3/startprogs.sh
+
+#font pango:Press Start 2P 8
+font pango:ProggyTinyTT 12
 
 floating_modifier $mod
 
@@ -46,19 +50,17 @@ set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "A"
-set $wstemp "T"
 
-bindsym $mod+1 [workspace=$wstemp] kill; workspace $ws1
-bindsym $mod+2 [workspace=$wstemp] kill; workspace $ws2
-bindsym $mod+3 [workspace=$wstemp] kill; workspace $ws3
-bindsym $mod+4 [workspace=$wstemp] kill; workspace $ws4
-bindsym $mod+5 [workspace=$wstemp] kill; workspace $ws5
-bindsym $mod+6 [workspace=$wstemp] kill; workspace $ws6
-bindsym $mod+7 [workspace=$wstemp] kill; workspace $ws7
-bindsym $mod+8 [workspace=$wstemp] kill; workspace $ws8
-bindsym $mod+9 [workspace=$wstemp] kill; workspace $ws9
-bindsym $mod+0 [workspace=$wstemp] kill; workspace $ws10
-bindsym $mod+T workspace $wstemp
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
 bindsym $mod+Shift+1 move container to workspace $ws1
 bindsym $mod+Shift+2 move container to workspace $ws2
 bindsym $mod+Shift+3 move container to workspace $ws3
@@ -69,6 +71,7 @@ bindsym $mod+Shift+7 move container to workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
+bindsym $mod+t move workspace to output right
 
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
@@ -95,17 +98,20 @@ bindsym $mod+r mode "resize"
 bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks
 bindsym XF86MonBrightnessUp exec xbacklight -inc 10 && notify-send --urgency=low $(xbacklight -get)
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10 && notify-send --urgency=low $(xbacklight -get)
-bindsym XF86AudioMicMute exec micmute
+bindsym XF86AudioLowerVolume exec amixer sset Master $(($RANDOM % 5 + 1))%- && pkill -SIGRTMIN+10 i3blocks
+bindsym XF86AudioRaiseVolume exec amixer sset Master $(($RANDOM % 5 + 1))%+ && pkill -SIGRTMIN+10 i3blocks
 bindsym $mod+z exec amixer sset Master $(($RANDOM % 5 + 1))%- && pkill -SIGRTMIN+10 i3blocks
 bindsym $mod+x exec amixer sset Master $(($RANDOM % 5 + 1))%+ && pkill -SIGRTMIN+10 i3blocks
-bindsym $mod+s --release exec scrot -s /tmp/screenshot-$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'
+bindsym $mod+s --release exec ~/.config/i3/takescreen.sh
 bindsym $mod+Shift+s --release exec scrot -s /tmp/screenshot.png && curl -si -F name=$RANDOM.png -F file=@/tmp/screenshot.png https://uguu.se/api.php\?d\=upload-tool | tail -1 | xclip -selection clipboard && notify-send uploaded && rm /tmp/screenshot.png
 bindsym $mod+m bar mode toggle
 # bindsym $mod+p exec xlock -mode coral -timeelapsed -count 1
 bindsym $mod+BackSpace exec cool-retro-term
 bindsym $mod+b exec /tmp/session-script.sh
 bindsym $mod+Shift+n exec cmus-remote -n
-bindsym $mod+p exec pomo 25
+bindsym $mod+p exec i3lock -i ~/wall-blocked.png -t && sleep 1 && xset dpms force off
+bindsym $mod+c exec echo -n | xclip -selection clipboard
+bindsym $mod+n exec mv ~/.config/i3blocks/config /tmp/config_aux && cp ~/.config/i3blocks/config_2 ~/.config/i3blocks/config && mv /tmp/config_aux ~/.config/i3blocks/config_2 && i3-msg 'restart'
 
 # class                 border  bground text    indicator child_border
 client.focused          #4C7899 #285577 #FFFFFF #2E9EF4   #d79921
@@ -131,7 +137,7 @@ bar {
             binding_mode       #2F343A #900000 #FFFFFF
          }
 
-            status_command SCRIPT_DIR=/home/tito/.config/i3blocks PATH=$PATH:~/.local/bin i3blocks
+         status_command SCRIPT_DIR=~/.config/i3blocks PATH=$PATH:~/.local/bin i3blocks
 
 }
 
@@ -144,3 +150,4 @@ bar {
 # borders
 hide_edge_borders smart
 for_window [class="^.*"] border pixel 1
+for_window [class="^.*"] sticky enable

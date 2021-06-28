@@ -1,39 +1,61 @@
-command=/usr/lib/i3blocks/$BLOCK_NAME
 separator_block_width=15
 markup=pango
+INLABEL=I 
+OUTLABEL=O 
+
+[descriptor]
+command=echo 'A'
+interval=once
+color=#6E006E
+
+[keyindicator]
+command=$SCRIPT_DIR/keyindicator/keyindicator
+interval=once
+signal=11
 
 [volume]
-label=Vo
+command=$SCRIPT_DIR/volume/volume
 instance=Master
 interval=once
 signal=10
+color=#DDDDDD
 
-[micmute]
-command=$SCRIPT_DIR/micmute/micmute
+[eth]
+command=$SCRIPT_DIR/eth/eth
+interval=120
+color=#666666
+
+[feriado]
+command=$SCRIPT_DIR/feriados/feriados
 interval=once
-signal=11
+color=#BB00BB
 
-[keyindicator]
-instance=CAPS
+# [bcra]
+# command=$SCRIPT_DIR/bcra/bcra
+# interval=once
+
+[blue]
+command=$SCRIPT_DIR/blue/blue
 interval=once
-signal=11
 
-[bcra]
-command=$SCRIPT_DIR/bcra/bcra
-interval=once
-
-#[money]
-#command=$SCRIPT_DIR/money/money
-#interval=5
+# [money]
+# command=$SCRIPT_DIR/money/money
+# interval=5
 
 [memory]
-label=M
-separator=false
+command=$SCRIPT_DIR/memory/memory
 interval=30
+color=#00BBBB
 
 [disk]
-label=D
+command=$SCRIPT_DIR/disk/disk
 interval=30
+color=#00BBBB
+
+[ip]
+command=echo $(curl ifconfig.me)
+interval=once
+color=#91E78B
 
 [iface]
 color=#00BB00
@@ -41,32 +63,36 @@ interval=10
 separator=false
 
 [wifi]
+command=$SCRIPT_DIR/wifi/wifi
 instance=wlp3s0
 interval=10
 
 [temperature]
+command=$SCRIPT_DIR/temperature/temperature
 interval=10
-
-[battery]
-command=$SCRIPT_DIR/battery/battery
-interval=30
 
 [uptime]
 command=date -ud @$(($(date +%s) - $(date -d "$(uptime -s)" +%s))) +%H:%M
 interval=60
 
-[wttr]
-command=curl 'wttr.in/buenos?format=%t+%h+%P'
-interval=900
+# [wttr]
+# command=echo $(curl 'wttr.in/Buenos\ Aires?format=%t') | sed 's/\+//'
+# color=#00AAFF
+# interval=900
+
+[battery]
+command=$SCRIPT_DIR/battery/battery
+interval=30
+
+# [agedays]
+# command=echo $((($(date +%s) - $(date -d 1993-12-22\ 05:35 +%s)) / 86400))d
+# interval=once
 
 [timeleft]
 command=$SCRIPT_DIR/countdown/countdown
+color=#AAAAAA
 interval=5
-
-[agedays]
-command=echo -n $((($(date +%s) - $(date -d 1993-12-22\ 05:35 +%s)) / 86400))d
-interval=once
 
 [time]
-command=date '+%s %U.%w %Y-%m-%d %H:%M'
-interval=5
+command=LC_ALL=es_AR.utf8 date '+%s %Y-%m-%d %a %H:%M:%S'
+interval=1

@@ -1,7 +1,8 @@
 export ZSH=$HOME/.oh-my-zsh
-export PATH=$PATH:~/.local/bin
+export PATH=$PATH:~/.local/bin:~/.emacs.d/bin
+export PATH="$HOME:$PATH"
 
-ZSH_THEME="dst"
+ZSH_THEME="ari"
 ENABLE_CORRECTION="false"
 
 plugins=(git)
@@ -28,8 +29,13 @@ function desenc {
   openssl aes-256-cbc -d -salt -in $1 -out $2 -v
 }
 
+function tg {
+    curl -X POST "https://api.telegram.org/bot$TG_BOT_APIKEY/sendMessage" -H "Content-Type: application/json" -d "{\"chat_id\":$TG_MY_CLIENT_ID, \"text\":\"$1\"}" > /dev/null 2> /dev/null
+}
 
-
-alias config='/usr/bin/git --git-dir=/home/tito/.cfg/ --work-tree=/home/tito'
 alias v='vim'
 alias feh='feh --auto-rotate --scale-down'
+alias bat='bat --wrap=never --pager="less -S"'
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

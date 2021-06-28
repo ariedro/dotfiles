@@ -1,6 +1,9 @@
 #!/bin/bash
 
-color=#4040AA
-price=\$$(curl 'https://api-contenidos.lanacion.com.ar/json/V3/economia/cotizacionblue/DBLUE' | jq -r '.venta' | sed 's/,/./')
-message="<span foreground=\"$color\">$price</span>" 
-echo $message
+sueldo_en_usd=$SUELDO_EN_USD
+
+dolar_ofi=$(curl -s https://api-dolar-argentina.herokuapp.com/api/dolaroficial | jq -r '.compra')
+dolar_blue=$(curl -s https://api-dolar-argentina.herokuapp.com/api/dolarblue | jq -r '.compra')
+sueldito=$(echo "scale=0; $sueldo_en_usd * $dolar_ofi / 1" | bc -l)
+
+echo "<span foreground=\"#888800\">\$$sueldito</span> <span foreground=\"#666666\">(</span><span foreground=\"#008800\">\$$dolar_ofi</span><span foreground=\"#666666\">/</span><span foreground=\"#4040AA\">\$$dolar_blue</span><span foreground=\"#666666\">)</span>"

@@ -56,3 +56,5 @@
 (package! format-all)
 (package! tide)
 (package! impatient-mode)
+(package! humanoid-themes)
+(package! zig-mode)

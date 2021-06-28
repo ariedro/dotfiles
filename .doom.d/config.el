@@ -54,29 +54,19 @@
 ;; they are implemented.
 
 ;; Copypasted memes
-(defun setup-tide-mode ()
-  (interactive)
-  (tide-setup)
-  (flycheck-mode +1)
-  (setq flycheck-check-syntax-automatically '(save mode-enabled))
-  (eldoc-mode +1)
-  (tide-hl-identifier-mode +1)
-  ;; company is an optional dependency. You have to
-  ;; install it separately via package-install
-  ;; `M-x package-install [ret] company`
-  (company-mode +1))
-
-(use-package lsp-mode
-  :ensure t
-  :commands (lsp lsp-deferred)
-  :hook (go-mode . lsp-deferred))
-
-;; Set up before-save hooks to format buffer and add/delete imports.
-;; Make sure you don't have other gofmt/goimports hooks enabled.
-(defun lsp-go-install-save-hooks ()
-  (add-hook 'before-save-hook #'lsp-format-buffer t t)
-  (add-hook 'before-save-hook #'lsp-organize-imports t t))
-(add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
+;; (defun setup-tide-mode ()
+;;   (interactive)
+;;   (tide-setup)
+;;   (flycheck-mode +1)
+;;   (setq flycheck-check-syntax-automatically '(save mode-enabled))
+;;   (eldoc-mode +1)
+;;   (tide-hl-identifier-mode +1)
+;;   ;; company is an optional dependency. You have to
+;;   ;; install it separately via package-install
+;;   ;; `M-x package-install [ret] company`
+;;   (setq company-idle-delay 2)
+;;   (company-mode +1)
+;;   )
 
 ;; Optional - provides fancier overlays.
 (use-package lsp-ui
@@ -91,20 +81,13 @@
   (setq company-idle-delay 0)
   (setq company-minimum-prefix-length 1))
 
-;; Optional - provides snippet support.
-(use-package yasnippet
-  :ensure t
-  :commands yas-minor-mode
-  :hook (go-mode . yas-minor-mode))
-
-
 ;; aligns annotation to the right hand side
 (setq company-tooltip-align-annotations t)
 
 ;; formats the buffer before saving
-(add-hook 'before-save-hook 'tide-format-before-save)
-
-(add-hook 'typescript-mode-hook #'setup-tide-mode)
+;; (add-hook 'before-save-hook 'tide-format-before-save)
+;;
+;; (add-hook 'typescript-mode-hook #'setup-tide-mode)
 
 ;; Ari memes
 
@@ -120,8 +103,8 @@
       "a s" #'selectric-mode)
 
 (map! :leader
-      :desc "Dumb jump go"
-      "a g" #'dumb-jump-go)
+      :desc "Jump to def"
+      "a g" #'+lookup/definition)
 
 (map! :leader
       :desc "Prettier"
@@ -138,9 +121,9 @@
 (with-eval-after-load 'evil-maps
   (define-key evil-motion-state-map (kbd "ñ") 'evil-ex))
 
-(global-set-key (kbd "M-p") 'ace-window)
+;; (global-set-key (kbd "M-p") 'ace-window)
 
-(ace-window-display-mode)
+;; (ace-window-display-mode)
 
 (setq org-todo-keywords
       '((sequence
@@ -153,37 +136,19 @@
          "ABRT(a)"  ; Task successfully completed
          "KILL(k)"))) ; Task was cancelled, aborted or is no longer applicable
 
-;; Go memes
-
-(use-package lsp-mode
-  :ensure t
-  :commands (lsp lsp-deferred)
-  :hook (go-mode . lsp-deferred))
-
-;; Set up before-save hooks to format buffer and add/delete imports.
-;; Make sure you don't have other gofmt/goimports hooks enabled.
-(defun lsp-go-install-save-hooks ()
-  (add-hook 'before-save-hook #'lsp-format-buffer t t)
-  (add-hook 'before-save-hook #'lsp-organize-imports t t))
-(add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
-
-;; Optional - provides fancier overlays.
 (use-package lsp-ui
   :ensure t
   :commands lsp-ui-mode)
 
-;; Company mode is a standard completion package that works well with lsp-mode.
-(use-package company
-  :ensure t
+
+(use-package! zig-mode
+  :hook ((zig-mode . lsp-deferred))
+  :custom (zig-format-on-save nil)
   :config
-  ;; Optionally enable completion-as-you-type behavior.
-  (setq company-idle-delay 0)
-  (setq company-minimum-prefix-length 1))
-
-;; Optional - provides snippet support.
-(use-package yasnippet
-  :ensure t
-  :commands yas-minor-mode
-  :hook (go-mode . yas-minor-mode))
-
-(setenv "PATH" (concat (getenv "PATH") ":/home/ari/go"))
+  (after! lsp-mode
+    (add-to-list 'lsp-language-id-configuration '(zig-mode . "zig"))
+    (lsp-register-client
+      (make-lsp-client
+        :new-connection (lsp-stdio-connection "<path to zls>")
+        :major-modes '(zig-mode)
+        :server-id 'zls))))
