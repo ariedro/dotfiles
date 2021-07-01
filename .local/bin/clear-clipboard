@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+for i in {buffer-cut,primary,secondary,clipboard}; do
+    echo -n | xclip -selection $i
+done
