@@ -110,7 +110,7 @@ bindsym $mod+BackSpace exec cool-retro-term
 bindsym $mod+b exec /tmp/session-script.sh
 bindsym $mod+Shift+n exec cmus-remote -n
 bindsym $mod+p exec i3lock -i ~/wall-blocked.png -t && sleep 1 && xset dpms force off
-bindsym $mod+c exec echo -n | xclip -selection clipboard
+bindsym $mod+c exec ~/.local/bin/clear-clipboard
 bindsym $mod+n exec mv ~/.config/i3blocks/config /tmp/config_aux && cp ~/.config/i3blocks/config_2 ~/.config/i3blocks/config && mv /tmp/config_aux ~/.config/i3blocks/config_2 && i3-msg 'restart'
 
 # class                 border  bground text    indicator child_border
