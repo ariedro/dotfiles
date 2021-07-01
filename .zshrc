@@ -44,9 +44,12 @@ function cd2 {
   cd $1
   if [ "$(pwd)" = "/home/ari/repos/ifit" ]; then
       export NODE_PATH="$(pwd)"
-      echo "meme exporta2"
+  fi
+  if [ -f "$(pwd)/.nvmrc" ]; then
+      nvm use
   fi
 }
+
 alias cd=cd2
 
 alias v='vim'
