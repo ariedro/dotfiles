@@ -12,7 +12,6 @@
   "editor.renderWhitespace": "all",
   "editor.tabSize": 2,
   "gitlens.codeLens.scopes": ["document"],
-  "prettier.configPath": "~/.prettierrc",
   "redhat.telemetry.enabled": false,
   "typescript.updateImportsOnFileMove.enabled": "always",
   "vim.smartRelativeLine": true,
