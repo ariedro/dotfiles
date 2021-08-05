@@ -5,8 +5,7 @@
   "[typescript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
   "[yaml]": { "editor.defaultFormatter": "redhat.vscode-yaml" },
   "editor.cursorSurroundingLines": 10,
-  "editor.fontFamily": "'Hack'",
-  "editor.inlineHints.fontFamily": "'Hack'",
+  "editor.fontFamily": "Courier",
   "editor.lineNumbers": "relative",
   "editor.minimap.enabled": false,
   "editor.renderWhitespace": "all",
@@ -16,5 +15,8 @@
   "vim.smartRelativeLine": true,
   "vim.useSystemClipboard": true,
   "window.menuBarVisibility": "toggle",
-  "workbench.colorTheme": "One Dark Pro"
+  "workbench.colorTheme": "Atom One Dark",
+  "debug.inlineValues": false,
+  "debug.toolBarLocation": "docked",
+  "security.workspace.trust.untrustedFiles": "open"
 }
