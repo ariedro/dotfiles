@@ -108,7 +108,7 @@
 
 (map! :leader
       :desc "Prettier"
-      "a i" #'json-pretty-print-buffer)
+      "a i" #'format-all-buffer)
 
 (map! :leader
       :desc "Grep"
