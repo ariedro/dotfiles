@@ -7,7 +7,7 @@ i3-msg 'workspace 1; move workspace to output HDMI-1'
 sleep 1
 i3-msg 'workspace 2; exec /usr/bin/alacritty'
 sleep 1
-i3-msg 'workspace 2; move workspace to output HDMI-1'
+i3-msg 'workspace 2; move workspace to output eDP-1'
 sleep 1
 i3-msg 'workspace 4; exec /usr/bin/emacs'
 sleep 1
