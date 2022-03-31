@@ -6,17 +6,24 @@
   "[yaml]": { "editor.defaultFormatter": "redhat.vscode-yaml" },
   "editor.cursorSurroundingLines": 10,
   "editor.fontFamily": "Courier",
+  "editor.fontSize": 14,
   "editor.lineNumbers": "relative",
-  "editor.minimap.enabled": false,
-  "editor.renderWhitespace": "all",
+  "editor.renderWhitespace": "trailing",
+  "editor.renderIndentGuides": false,
   "editor.tabSize": 2,
   "gitlens.codeLens.scopes": ["document"],
   "typescript.updateImportsOnFileMove.enabled": "always",
   "vim.smartRelativeLine": true,
   "vim.useSystemClipboard": true,
   "window.menuBarVisibility": "toggle",
-  "workbench.colorTheme": "Atom One Dark",
+  "workbench.colorTheme": "Dracula",
   "debug.inlineValues": false,
   "debug.toolBarLocation": "docked",
-  "security.workspace.trust.untrustedFiles": "open"
+  "security.workspace.trust.untrustedFiles": "open",
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.minimap.enabled": false,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "editor.smoothScrolling": true
 }
