@@ -1,9 +1,0 @@
-#!/bin/bash
-
-sueldo_en_usd="insert your salary on official usd here"
-
-dolar_ofi=$(curl -s https://api-dolar-argentina.herokuapp.com/api/dolaroficial | jq -r '.compra')
-dolar_blue=$(curl -s https://api-dolar-argentina.herokuapp.com/api/dolarblue | jq -r '.compra')
-sueldito=$(echo "scale=0; $sueldo_en_usd * $dolar_ofi / 1" | bc -l)
-
-echo "<span foreground=\"#888800\">\$$sueldito</span> <span foreground=\"#666666\">(</span><span foreground=\"#008800\">\$$dolar_ofi</span><span foreground=\"#666666\">/</span><span foreground=\"#4040AA\">\$$dolar_blue</span><span foreground=\"#666666\">)</span>"
