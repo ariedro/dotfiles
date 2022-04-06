@@ -1,5 +1,6 @@
 set $mod Mod4
-exec --no-startup-id /usr/bin/feh --bg-center ~/wall.jpg
+exec --no-startup-id compton
+exec --no-startup-id /usr/bin/feh --bg-fill ~/wall.jpg
 exec --no-startup-id dunst
 exec --no-startup-id unclutter --timeout 1 --ignore-scrolling
 
@@ -141,13 +142,13 @@ bar {
 
 }
 
-# i3-gaps
-#gaps inner 10
-#gaps outer 0
-#smart_gaps on
-#new_window none
-
 # borders
 hide_edge_borders smart
-for_window [class="^.*"] border pixel 1
+for_window [class="^.*"] border pixel 0
 for_window [class="^.*"] sticky enable
+
+# Examples
+gaps inner 10
+gaps outer 0
+smart_gaps on
+
