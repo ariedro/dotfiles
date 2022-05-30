@@ -1,5 +1,0 @@
-#!/bin/bash
-
-if [ "$BLOCK_BUTTON" -eq "3" ]; then firefox https://www.coingecko.com/en/coins/ethereum; fi
-
-curl -s "https://api.ethplorer.io/getAddressInfo/$ETH_ADDRESS?apiKey=freekey" | jq -r '"\(.ETH.price.diff) \(.ETH.price.diff7d) \(.ETH.balance) \(.ETH.price.rate) \(.tokens[2].balance) \(.tokens[2].tokenInfo.price.rate) \(.ETH.price.ts)"' | awk '{srand(); printf "<span foreground=\"%s\">%.2f</span>/<span foreground=\"%s\">%.2f</span> <span foreground=\"#DD33DD\">$E %.2f</span> <span foreground=\"#DDDD33\">$D %.2f</span> (%ds)\n", ($1 > 0) ? "#26a69a" : "#ef5350", $1, ($2 > 0 ? "#26a69a" : "#ef5350"), $2, $4*$3, $6*$5/10**18, srand() - $7}'
