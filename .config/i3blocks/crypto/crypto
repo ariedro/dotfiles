@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [ "$BLOCK_BUTTON" -eq "3" ]; then firefox https://www.coingecko.com/en/coins/bitcoin; fi
+
+curl -s \
+  'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin%2Cethereum%2Cterra-luna%2Cshiba-inu&vs_currencies=usd&include_24hr_change=true' | \
+  jq -r '"\(.bitcoin.usd) \(.bitcoin.usd_24h_change) \(.ethereum.usd) \(.ethereum.usd_24h_change) \(."terra-luna".usd) \(."terra-luna".usd_24h_change)"' |\
+  awk '{printf "<span foreground=\"#F7931A\">BTC %d</span>(<span foreground=\"%s\">%.1f%</span>) <span foreground=\"#8A92B2\">ETH %.2f</span>(<span foreground=\"%s\">%.1f%</span>) <span foreground=\"#FCD837\">LUNC %.6f</span>(<span foreground=\"%s\">%.1f%</span>)\n", $1, ($2 > 0 ? "#02cb00" : "#ff89b9"), $2, $3, ($4 > 0 ? "#02cb00" : "#ff89b9"), $4, $5, ($6 > 0 ? "#02cb00" : "#ff89b9"), $6}'

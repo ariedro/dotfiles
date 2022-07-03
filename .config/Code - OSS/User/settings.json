@@ -14,9 +14,19 @@
   "gitlens.codeLens.scopes": ["document"],
   "prettier.configPath": "~/.prettierrc",
   "redhat.telemetry.enabled": false,
+  "editor.fontSize": 14,
+  "editor.renderIndentGuides": false,
   "typescript.updateImportsOnFileMove.enabled": "always",
   "vim.smartRelativeLine": true,
   "vim.useSystemClipboard": true,
   "window.menuBarVisibility": "toggle",
-  "workbench.colorTheme": "One Dark Pro"
+  "workbench.colorTheme": "Dracula",
+  "debug.inlineValues": false,
+  "debug.toolBarLocation": "docked",
+  "security.workspace.trust.untrustedFiles": "open",
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "diffEditor.ignoreTrimWhitespace": false,
+  "editor.smoothScrolling": true
 }

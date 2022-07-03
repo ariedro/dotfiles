@@ -1,5 +1,6 @@
 set $mod Mod4
-exec --no-startup-id /usr/bin/feh --bg-center ~/wall.jpg
+exec --no-startup-id compton
+exec --no-startup-id /usr/bin/feh --bg-fill ~/wall.jpg
 exec --no-startup-id dunst
 exec --no-startup-id unclutter --timeout 1 --ignore-scrolling
 
@@ -98,10 +99,10 @@ bindsym $mod+r mode "resize"
 bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks
 bindsym XF86MonBrightnessUp exec xbacklight -inc 10 && notify-send --urgency=low $(xbacklight -get)
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10 && notify-send --urgency=low $(xbacklight -get)
-bindsym XF86AudioLowerVolume exec amixer sset Master $(($RANDOM % 5 + 1))%- && pkill -SIGRTMIN+10 i3blocks
-bindsym XF86AudioRaiseVolume exec amixer sset Master $(($RANDOM % 5 + 1))%+ && pkill -SIGRTMIN+10 i3blocks
-bindsym $mod+z exec amixer sset Master $(($RANDOM % 5 + 1))%- && pkill -SIGRTMIN+10 i3blocks
-bindsym $mod+x exec amixer sset Master $(($RANDOM % 5 + 1))%+ && pkill -SIGRTMIN+10 i3blocks
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5% && pkill -SIGRTMIN+10 i3blocks
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5% && pkill -SIGRTMIN+10 i3blocks
+bindsym $mod+z exec pactl set-sink-volume @DEFAULT_SINK@ -5% && pkill -SIGRTMIN+10 i3blocks
+bindsym $mod+x exec pactl set-sink-volume @DEFAULT_SINK@ +5% && pkill -SIGRTMIN+10 i3blocks
 bindsym $mod+s --release exec ~/.local/bin/takescreen clipboard
 bindsym $mod+Shift+s --release exec ~/.local/bin/takescreen upload
 bindsym $mod+m bar mode toggle
@@ -141,13 +142,13 @@ bar {
 
 }
 
-# i3-gaps
-#gaps inner 10
-#gaps outer 0
-#smart_gaps on
-#new_window none
-
 # borders
 hide_edge_borders smart
-for_window [class="^.*"] border pixel 1
+for_window [class="^.*"] border pixel 0
 for_window [class="^.*"] sticky enable
+
+# Examples
+gaps inner 10
+gaps outer 0
+smart_gaps on
+
